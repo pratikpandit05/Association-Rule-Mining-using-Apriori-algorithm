@@ -1,0 +1,76 @@
+The project 'arm' involves four tasks and is divided into five important parts ie. five classes.
+
+Part 1 (Class: arm.java):
+Approach:  
+1. This class consists of the 'main' function which executes all the tasks.
+2. This class creates and populates the 'Trans' and 'Items' table into Oracle server.
+3. 'Batch update' procedure is used to populate the data.
+4. It reads the data from 'system.in' file, and executes the tasks by passing the data.
+
+Difficulties
+1. The initial problems faced were related creating a remote connection to CISE Oracle server.
+2. Secondly, the initial approach of inserting tuples one-by-one took up more than five minutes.
+ 
+Things learned:
+1. This part of the project helped in learning the basics of creating a remote connection to Oracle server.
+2. Also, developing this class helped in understanding workings of prepared statements, query execution using Java.
+
+Part 2 (Class: Task1.java):
+Approach:
+1. Approach to Task1 was quite simple. It involved firing a simple SQL query with a specific support condition.
+2. It basically creates a Frequent 1-Itemset and outputs in file.
+
+Part 3 (Class: Task2.java) :
+Approach:
+1. Task2 is built on Task1.
+2. It basically involves a simple 'join' operation to create all candidate itemsets.
+3. It then creates a Frequent 2-Itemset satisfying the support condition. 
+
+Difficulties:
+1. Few initial difficulties in outputing the results in an 'system.out.X' file in the specified format.
+
+Things learned:
+1. Basic file outputing, executing SQL 'Insert', 'Join' operations using Java(JDBC) on a remote database.
+
+Part 4 (Class: Task3.java)
+Approach:
+1. The most instinctive approach to Task3 was to create a procedure and create k-Itemsets.
+2. However, after a lot of reading, understanding of procedures, cursors it was decided to find an
+   alternative approach.
+3. The alternative approach involved using the methods described in 'arm.pdf'.
+4. However, the time taken for execution varied from two to three minutes for Task3 only.
+5. Rather than optimizing, it was decided to follow another approach which involved an optimized implmentation
+   of Apriori algorithm.
+6. Queries to develop Frequent 1 and 2-Itemsets tables from previous tasks were generalized to find Frequent 
+   k-itemsets.
+7. Along with the usual, Candidate Itemsets used in Apriori algorithm, another table was formed for every
+   itemset to optimize the running time. An optimized Apriori approach has been followed to develop Task3.
+
+Difficulties:
+1. Implementation of Apriori algorithm using core logic as SQL queries posed quite a challenge.
+2. The brute force implementation of Apriori algorithm was extremely expensive.
+3. Implementing procedures without using cursors proved to be a very difficult task, eventually disregarded.
+4. Creating Candidate Itemsets by 'joining' other Itemsets involved dealing with duplicates.
+
+Things learned:
+1. Basic understanding of 'Stored Procedures', 'Cursors' and implementation using Java.
+2. Complete understanding of 'Apriori' Algorithm to develop Frequent k-itemsets using Java and SQL.
+3. Complete understanding of 'Data Mining', and it's implementation.
+
+Part 5 (Class: Task4.java)
+Approach:
+1. The approach used was the one followed in developing k-Itemsets in Task3.
+2. Post processing on the Frequent k-Itemset table yields association rules.
+3. Post processing involves calculating 'Confidence' using 'Support' of all 
+   Frequent k-itemsets generated till now.
+   
+Difficulties:
+1. Since we optimized Task3 to remove duplicates, the logic used to remove duplicates lead to fewer 
+   association rules.
+2. As such, it was difficult find both association rules like a->b and b->a from same Frequent Itemset table 
+   together.
+3. The permutations to find various association rules was a difficult task.
+
+Things learned:
+1. Complete understanding of association rules and it's implementation using Java and SQL.
+2. Complete understaning of 'Market basket' Analysis.
